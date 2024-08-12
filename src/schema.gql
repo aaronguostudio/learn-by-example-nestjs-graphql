@@ -1,0 +1,51 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+"""Tag"""
+type Tag {
+  id: ID!
+  name: String!
+  disclaimers: [Disclaimer!]!
+}
+
+"""The disclaimer object type"""
+type Disclaimer {
+  """Unique identifier of the disclaimer"""
+  id: ID!
+  name: String!
+  content: String!
+  tags: [Tag!]!
+  createdAt: Date
+  updatedAt: Date
+  deletedAt: Date
+  createdBy: String
+  updatedBy: String
+  deletedBy: String
+}
+
+"""Date custom scalar type"""
+scalar Date
+
+type Query {
+  disclaimers: [Disclaimer!]!
+  disclaimer(id: ID!): Disclaimer!
+}
+
+type Mutation {
+  createDisclaimer(createDisclaimerInput: CreateDisclaimerInput!): Disclaimer!
+  updateDisclaimer(id: Float!, updateDisclaimerInput: UpdateDisclaimerInput!): Disclaimer!
+  deleteDisclaimer(id: ID!): Disclaimer!
+}
+
+input CreateDisclaimerInput {
+  name: String!
+  content: String!
+  tags: [String!]!
+}
+
+input UpdateDisclaimerInput {
+  name: String
+  content: String
+  tags: [String!]
+}
